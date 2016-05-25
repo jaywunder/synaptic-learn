@@ -23,7 +23,7 @@ let inputData // = inputImage.data
 let targetData // = targetImage.data
 
 var img = new Image();
-img.src = './assets/josh.jpg';
+img.src = './assets/smile.jpeg';
 img.onload = function() {
   inputCtx.drawImage(img, 0, 0);
   img.style.display = 'none';
@@ -68,7 +68,7 @@ function main() {
   if (++iterationCount < 1000)
     setTimeout(main, 0)
 
-  applyNetwork('josh.jpg')
+  applyNetwork('colorwheel.png')
 }
 
 function learn(inputData, targetData) {
