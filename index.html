@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Synaptic Learn</title>
+  <meta name="Author" content="Jacob Wunder"/>
+  <link rel="stylesheet" type="text/css" href="./css/grd.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+  <div style="display:none;">
+    <img id="smileImage" src="./assets/smile.jpeg" alt="smile picture for canvas" />
+  </div>
+  <div class="Grid -stretch">
+    <div class="Cell -4of12 Grid -center">
+      <h1>Input</h1>
+      <canvas id="input" width="300" height="300"></canvas>
+    </div>
+    <div class="Cell -4of12 Grid -center">
+      <h1>Target</h1>
+      <canvas id="target" width="300" height="300"></canvas>
+    </div>
+    <div class="Cell -4of12 Grid -center">
+      <h1>Output</h1>
+      <canvas id="output" width="300" height="300"></canvas>
+    </div>
+  </div>
+
+  <script src="./lib/synaptic.min.js" charset="utf-8"></script>
+  <script src="./js/main.js" charset="utf-8"></script>
+
+</body>
+</html>
