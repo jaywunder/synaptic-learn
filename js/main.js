@@ -22,9 +22,17 @@ let targetImage // = targetCtx.getImageData(0, 0, targetCanvas.width, targetCanv
 let inputData // = inputImage.data
 let targetData // = targetImage.data
 
+let config = {
+  ActivelyTransform: false,
+}
+let gui = new dat.GUI()
+
+gui.add(config, 'ActivelyTransform')
+
+
 var img = new Image();
-img.src = './assets/smile.jpeg';
-img.onload = function() {
+img.src = './assets/colorwheel.jpg';
+img.onload = function () {
   inputCtx.drawImage(img, 0, 0);
   img.style.display = 'none';
   init()
@@ -46,10 +54,9 @@ function init() {
 
 function main() {
   let outputData = []
-  // if (iterationCount % 1 === 0)
-  //   console.log(iterationCount);
-
-  // transform(targetImage.data); targetCtx.putImageData(targetImage, 0, 0)
+  if (config.ActivelyTransform){
+    transform(targetImage.data); targetCtx.putImageData(targetImage, 0, 0)
+  }
 
   for (let i = 0; i < inputData.length; i += 4) {
     let input = [inputData[i] / 255, inputData[i+1] / 255, inputData[i+2] / 255]
@@ -68,7 +75,7 @@ function main() {
   if (++iterationCount < 1000)
     setTimeout(main, 0)
 
-  applyNetwork('colorwheel.png')
+  // applyNetwork('colorwheel.jpg')
 }
 
 function learn(inputData, targetData) {
@@ -97,7 +104,6 @@ function applyNetwork(imageName) {
       let rgb = network.activate(input)
       rgb.push(1)
       output.push(rgb)
-      // console.log(rgb[0] - input[0]);
     }
 
     showOutput(output, canvas)
@@ -118,7 +124,7 @@ function showOutput(newImageData, canvas) {
 }
 
 function transform(data) {
-  return invertColors(data)
+  return randomizeColors(data)
 }
 
 function invertColors(data) {
